@@ -103,7 +103,7 @@ header h2 {
   text-align: left;
   flex: 1;
   height: 180px;
-  background-image: url("../res/rain.gif");
+  background-image: url("../gifs/sun.gif");
   background-size: cover;
   color: white;
   border-right: 1px solid white;
