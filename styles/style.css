@@ -85,7 +85,6 @@ header h2 {
 }
 
 .location-card .forecast .hour-forecast {
-  border-right: 1px solid black;
   width: 25%;
 }
 
@@ -93,6 +92,7 @@ header h2 {
   padding: 0 14px;
   line-height: 20px;
   border-bottom: 1px solid black;
+  border-right: 1px solid black;
 }
 
 .location-card .forecast .hour-forecast .details {
@@ -103,6 +103,10 @@ header h2 {
   text-align: left;
   flex: 1;
   height: 180px;
+  background-image: url("../res/rain.gif");
+  background-size: cover;
+  color: white;
+  border-right: 1px solid white;
 }
 
 .location-card .forecast .hour-forecast:last-child {
