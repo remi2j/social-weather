@@ -38,6 +38,37 @@
         </div>
         <div class="forecast">
           <div class="label">Today, march 18th</div>
+          <div class="hours">
+            <div class="hour-forecast">
+              <p class="time">10 am</p>
+              <p class="details">
+                <p class="main">Sunny</p>
+                <p class="temperature">18 degrees</p>
+                <p class="humidity">42% humidity</p>
+              </p>
+            </div>
+            <div class="hour-forecast">
+              <p class="main">Sunny</p>
+              <p class="temperature">18 degrees</p>
+              <p class="humidity">42% humidity</p>
+            </div>
+            <div class="hour-forecast">
+              <p class="main">Sunny</p>
+              <p class="temperature">18 degrees</p>
+              <p class="humidity">42% humidity</p>
+            </div>
+            <div class="hour-forecast">
+              <p class="main">Sunny</p>
+              <p class="temperature">18 degrees</p>
+              <p class="humidity">42% humidity</p>
+            </div>
+            <div class="hour-forecast">
+              <p class="main">Sunny</p>
+              <p class="temperature">18 degrees</p>
+              <p class="humidity">42% humidity</p>
+            </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

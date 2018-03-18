@@ -49,7 +49,6 @@ header h2 {
 }
 
 .city .city-name {
-  color: red;
   line-height: 64px;
   text-align: center;
   display: block;
@@ -64,14 +63,49 @@ header h2 {
 }
 
 .location-card .friends {
-  width: 200px;
-  height: 300px;
-  overflow-y: scroll;
+  width: 25%;
   border-right: 1px solid black;
-  
 }
 
 .location-card .friends .list {
   padding: 0 14px;
   line-height: 20px;
+  height: 200px;
+  overflow-y: scroll;
+}
+
+.location-card .forecast {
+  width: 75%;
+}
+
+.location-card .forecast .hours {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.location-card .forecast .hour-forecast {
+  border-right: 1px solid black;
+  width: 20%;
+}
+
+.location-card .forecast .hour-forecast .time {
+  padding: 0 14px;
+  line-height: 20px;
+  border-bottom: 1px solid black;
+  color: red;
+}
+
+.location-card .forecast .hour-forecast .details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 14px;
+  text-align: left;
+  flex: 1;
+  height: 180px;
+}
+
+.location-card .forecast .hour-forecast:last-child {
+  border: 0;
 }
