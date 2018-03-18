@@ -41,32 +41,39 @@
           <div class="hours">
             <div class="hour-forecast">
               <p class="time">10 am</p>
-              <p class="details">
-                <p class="main">Sunny</p>
+              <div class="details">
+                <p class="main">light intensity shower rain</p>
                 <p class="temperature">18 degrees</p>
                 <p class="humidity">42% humidity</p>
-              </p>
+                <p class="wind">1.2 mph</p>
+              </div>
             </div>
             <div class="hour-forecast">
-              <p class="main">Sunny</p>
-              <p class="temperature">18 degrees</p>
-              <p class="humidity">42% humidity</p>
+              <p class="time">10 am</p>
+              <div class="details">
+                <p class="main">light intensity shower rain</p>
+                <p class="temperature">18 degrees</p>
+                <p class="humidity">42% humidity</p>
+                <p class="wind">1.2 mph</p>
+              </div>
             </div>
             <div class="hour-forecast">
-              <p class="main">Sunny</p>
-              <p class="temperature">18 degrees</p>
-              <p class="humidity">42% humidity</p>
+              <p class="time">10 am</p>
+              <div class="details">
+                <p class="main">light intensity shower rain</p>
+                <p class="temperature">18 degrees</p>
+                <p class="humidity">42% humidity</p>
+                <p class="wind">1.2 mph</p>
+              </div>
             </div>
             <div class="hour-forecast">
-              <p class="main">Sunny</p>
-              <p class="temperature">18 degrees</p>
-              <p class="humidity">42% humidity</p>
-            </div>
-            <div class="hour-forecast">
-              <p class="main">Sunny</p>
-              <p class="temperature">18 degrees</p>
-              <p class="humidity">42% humidity</p>
-            </div>
+              <p class="time">10 am</p>
+              <div class="details">
+                <p class="main">light intensity shower rain</p>
+                <p class="temperature">18 degrees</p>
+                <p class="humidity">42% humidity</p>
+                <p class="wind">1.2 mph</p>
+              </div>
             </div>
           </div>
         </div>
