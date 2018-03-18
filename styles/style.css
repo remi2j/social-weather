@@ -1,0 +1,77 @@
+body {
+  color: black;
+  font-family: monospace;
+}
+
+header {
+  text-align: center;
+  padding: 24px 0;
+  height: 100px;
+  border-bottom: 1px solid black;
+}
+
+header h1 {
+  font-size: 36px;
+}
+
+header h2 {
+  font-size: 14px;
+}
+
+.connect-options {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 100px);
+  text-align: center;
+}
+
+.connect-options .connect {
+  width: 50%;
+  line-height: calc(100vh - 100px);
+  border-bottom: 1px solid black;
+}
+
+.connect-options .connect:first-child {
+  border-right: 1px solid black;
+}
+
+/* FORECAST CARD */
+
+.city {
+  border: 1px solid black;
+  width: 900px;
+  margin: 30px auto;
+}
+
+.location-card {
+  display: flex;
+  flex-direction: row;
+}
+
+.city .city-name {
+  color: red;
+  line-height: 64px;
+  text-align: center;
+  display: block;
+  border-bottom: 1px solid black;
+}
+
+.location-card .label {
+  border-bottom: 1px solid black;
+  text-transform: uppercase;
+  line-height: 20px;
+  padding: 0 14px;
+}
+
+.location-card .friends {
+  width: 200px;
+  height: 300px;
+  overflow-y: scroll;
+  border-right: 1px solid black;
+  
+}
+
+.location-card .friends .list {
+  padding: 0 14px;
+  line-height: 20px;
+}
