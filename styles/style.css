@@ -33,8 +33,45 @@ CONNECT TWITTER
 section.twitter-connect {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  margin: 0 auto;
+  width: 450px;
   height: calc(100vh - 100px);
+}
+
+.twitter-connect .instruction {
+  line-height: 40px;
+}
+
+.twitter-connect form {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.twitter-connect form label.at {
+  width: 60px;
+  height: 60px;
+  border: 1px solid black;
+  line-height: 60px;
+  text-align: center;
+}
+
+.twitter-connect form input.search {
+  flex: 1;
+  height: 60px;
+  padding: 0 14px;
+  line-height: 60px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.twitter-connect form input.go {
+  width: 60px;
+  height: 60px;
+  border: 1px solid black;
+  cursor: pointer;
 }
 
 /**************
