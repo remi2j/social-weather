@@ -9,13 +9,10 @@
   <title>Social Weather</title>
 </head>
 <body>
-  <?php include "components/header.php" ?>
-  <!-- <div class="connect-options">
-    <a href="#" class="connect">Connect with Facebook</a>
-    <a href="#" class="connect">Connect with Twitter</div>
-  </div> -->
+  <?php include "imports/header.php" ?>
+  <?php include "imports/twitter-connect.php" ?>
   <section class="cities">
-    <?php include "components/city.php" ?>
+    <?php include "imports/city.php" ?>
   </section>
 </body>
 </html>

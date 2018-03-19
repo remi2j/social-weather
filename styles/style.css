@@ -1,7 +1,13 @@
 body {
   color: black;
-  font-family: monospace;
+  font-family: helvetica;
 }
+
+/**************
+*
+HEADER
+*
+***************/
 
 header {
   text-align: center;
@@ -18,24 +24,24 @@ header h2 {
   font-size: 14px;
 }
 
-.connect-options {
+/**************
+*
+CONNECT TWITTER
+*
+***************/
+
+section.twitter-connect {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: space-around;
   height: calc(100vh - 100px);
-  text-align: center;
 }
 
-.connect-options .connect {
-  width: 50%;
-  line-height: calc(100vh - 100px);
-  border-bottom: 1px solid black;
-}
-
-.connect-options .connect:first-child {
-  border-right: 1px solid black;
-}
-
-/* FORECAST CARD */
+/**************
+*
+FORECAST CARD
+*
+***************/
 
 .city {
   border: 1px solid black;

@@ -1,5 +1,6 @@
 cours.php
 cache/*
+imports/api-keys.php
 
 # Created by https://www.gitignore.io/api/macos,visualstudiocode
 
