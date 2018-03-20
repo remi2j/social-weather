@@ -33,16 +33,26 @@ $friends = json_decode($friends);
 
 // Get locations from friends list
 $locations = new stdClass();
+
 foreach ($friends->users as $_user) {
   // Save location if it exists
   if ($_user->location !== '') {
-    // Use MD5 to normalize location strings
-    if (!property_exists($locations, md5($_user->location))) {
+    // Find location with Google Maps
+    $mapsAPI = 'https://maps.googleapis.com/maps/api/geocode/json?address=';
+    $mapsURL = $mapsAPI . $_user->location . '&key=' . $mapsKey;
+    $mapsURL = str_replace(' ', '%20', $mapsURL);
+    $mapsData = file_get_contents($mapsURL);
+    $mapsData = json_decode($mapsData);
+    
+    // Normalize location name
+    $normalizedLocation = $mapsData->results[0]->address_components[0]->long_name;
+
+    if (!property_exists($locations, $normalizedLocation)) {
       // Create array of users living there
-      $locations->{md5($_user->location)} = ['@' .$_user->screen_name];
+      $locations->{$normalizedLocation} = ['@' . $_user->screen_name];
     } else {
       // Add user to location's array
-      array_push($locations->{md5($_user->location)}, '@' .$_user->screen_name);
+      array_push($locations->{$normalizedLocation}, '@' . $_user->screen_name);
     }
   }
 }
