@@ -9,10 +9,10 @@
   <title>Social Weather</title>
 </head>
 <body>
-  <?php include "imports/header.php" ?>
-  <?php include "imports/twitter-connect.php" ?>
-  <section class="cities">
+  <?php include "includes/header.php" ?>
+  <?php include "includes/connect.php" ?>
+  <!-- <section class="cities">
     <?php include "imports/city.php" ?>
-  </section>
+  </section> -->
 </body>
 </html>
