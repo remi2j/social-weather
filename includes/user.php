@@ -1,15 +1,21 @@
 <?php
 
 include 'api-keys.php';
+include 'twitter-wrapper.php';
 
-$friendsAPI = 'https://api.twitter.com/1.1/friends/list.json?screen_name=';
+$friendsURL = 'https://api.twitter.com/1.1/friends/list.json';
+$requestMethod = 'GET';
+$userParam = '?screen_name=' .$_GET['handle'];
 
-$errorMessages = [];
-if (!empty($_GET)) {
-  echo 'Hello there, ' .$_GET['handle']. '!';
-  $rawFriends = file_get_contents($friendsAPI);
-  $friends = json_decode($rawFriends);
-  echo '<pre>';
-  var_dump($friends);
-  echo '</pre>';
-}
+$twitter = new TwitterAPIExchange($settings);
+
+echo $twitter
+  ->setGetfield($userParam)
+  ->buildOauth($friendsURL, $requestMethod)
+  ->performRequest();
+
+
+
+
+
+//echo 'Hello there, ' .$_GET['handle']. '!';
