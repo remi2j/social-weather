@@ -8,14 +8,12 @@ $cachePath = '../cache/' .$_GET['handle']. '.txt';
 
 if (file_exists($cachePath)) {
   // Get friends from cache
-  echo 'from cache <br>';
   $friends = file_get_contents($cachePath);
   $friends = json_decode($friends);
 } else {
   // Get friends from Twitter API
-  echo 'from API <br>';
-  // Prepare request parameters
   $twitter = new TwitterAPIExchange($settings);
+  // Prepare request parameters
   $friendsURL = 'https://api.twitter.com/1.1/friends/list.json';
   $requestMethod = 'GET';
   $userParam = '?screen_name=' .$_GET['handle'];
@@ -30,4 +28,25 @@ if (file_exists($cachePath)) {
   file_put_contents($cachePath, json_encode($friends));
 }
 
-echo $friends;
+// Turn JSON into object
+$friends = json_decode($friends);
+
+// Get locations from friends list
+$locations = new stdClass();
+foreach ($friends->users as $_user) {
+  // Save location if it exists
+  if ($_user->location !== '') {
+    // Use MD5 to normalize location strings
+    if (!property_exists($locations, md5($_user->location))) {
+      // Create array of users living there
+      $locations->{md5($_user->location)} = ['@' .$_user->screen_name];
+    } else {
+      // Add user to location's array
+      array_push($locations->{md5($_user->location)}, '@' .$_user->screen_name);
+    }
+  }
+}
+
+echo '<pre>';
+var_dump($locations);
+echo '</pre>';
