@@ -4,11 +4,11 @@ include 'api-keys.php';
 include 'twitter-wrapper.php';
 
 // Check if cached data exists
-$cachePath = '../cache/' .$_GET['handle']. '.txt';
+$twitterCachePath = '../cache/user' . $_GET['handle'] . '.txt';
 
-if (file_exists($cachePath)) {
+if (file_exists($twitterCachePath)) {
   // Get friends from cache
-  $friends = file_get_contents($cachePath);
+  $friends = file_get_contents($twitterCachePath);
   $friends = json_decode($friends);
 } else {
   // Get friends from Twitter API
@@ -25,7 +25,7 @@ if (file_exists($cachePath)) {
     ->performRequest();
 
   // Cache for future sessions
-  file_put_contents($cachePath, json_encode($friends));
+  file_put_contents($twitterCachePath, json_encode($friends));
 }
 
 // Turn JSON into object
@@ -37,15 +37,32 @@ $locations = new stdClass();
 foreach ($friends->users as $_user) {
   // Save location if it exists
   if ($_user->location !== '') {
-    // Find location with Google Maps
-    $mapsAPI = 'https://maps.googleapis.com/maps/api/geocode/json?address=';
-    $mapsURL = $mapsAPI . $_user->location . '&key=' . $mapsKey;
-    $mapsURL = str_replace(' ', '%20', $mapsURL);
-    $mapsData = file_get_contents($mapsURL);
-    $mapsData = json_decode($mapsData);
+    // Identify location
+    $cityCachePath = '../cache/city' . md5($_user->location) . '.txt';
+    if (file_exists($cityCachePath)) {
+      echo 'from cache <br>';
+      // Get maps data from cache if available
+      $mapsData = json_decode($cityCachePath);
+    } else {
+      echo 'from api <br>';
+      // Find location with Google Maps
+      $mapsAPI = 'https://maps.googleapis.com/maps/api/geocode/json?address=';
+      $mapsURL = $mapsAPI . $_user->location . '&key=' . $mapsKey;
+      $mapsURL = str_replace(' ', '%20', $mapsURL);
+      $mapsData = file_get_contents($mapsURL);
+      $mapsData = json_decode($mapsData);
+      // Cache for future sessions
+      file_put_contents($cityCachePath, json_encode($mapsData));
+    }
     
     // Normalize location name
-    $normalizedLocation = $mapsData->results[0]->address_components[0]->long_name;
+    if (count($mapsData->results) > 0) {
+      $normalizedLocation = $mapsData->results[0]->address_components[0]->long_name;
+    } else {
+      $user->location = '';
+      // Delete cached file
+      unlink($cityCachePath);
+    }
 
     if (!property_exists($locations, $normalizedLocation)) {
       // Create array of users living there
@@ -57,6 +74,6 @@ foreach ($friends->users as $_user) {
   }
 }
 
-echo '<pre>';
-var_dump($locations);
-echo '</pre>';
+// echo '<pre>';
+// var_dump($locations);
+// echo '</pre>';
