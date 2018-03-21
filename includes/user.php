@@ -3,6 +3,9 @@
 include 'api-keys.php';
 include 'twitter-wrapper.php';
 
+// Reset error message
+$errorMessage = '';
+
 // Check if cached data exists
 $twitterCachePath = '../cache/user' . $_GET['handle'] . '.txt';
 
@@ -24,11 +27,21 @@ if (file_exists($twitterCachePath)) {
     ->buildOauth($friendsURL, $requestMethod)
     ->performRequest();
 
-  // Cache for future sessions
-  file_put_contents($twitterCachePath, json_encode($friends));
+  $friends = json_decode($friends);
+
+  // Check if request was successful
+  $errorMessage = $friends->errors[0]->message ? : '';
+  if ($errorMessage === '') {
+    // Cache for future sessions
+    file_put_contents($twitterCachePath, json_encode($friends));
+  } else {
+    // Display error message
+    die($errorMessage);
+  }
+
+
 }
 
-// Turn JSON into object
 $friends = json_decode($friends);
 
 // Get locations from friends list
@@ -40,11 +53,11 @@ foreach ($friends->users as $_user) {
     // Identify location
     $cityCachePath = '../cache/city' . md5($_user->location) . '.txt';
     if (file_exists($cityCachePath)) {
-      echo 'from cache <br>';
+      // echo 'from cache <br>';
       // Get maps data from cache if available
       $mapsData = json_decode($cityCachePath);
     } else {
-      echo 'from api <br>';
+      // echo 'from api <br>';
       // Find location with Google Maps
       $mapsAPI = 'https://maps.googleapis.com/maps/api/geocode/json?address=';
       $mapsURL = $mapsAPI . $_user->location . '&key=' . $mapsKey;
@@ -64,7 +77,7 @@ foreach ($friends->users as $_user) {
       unlink($cityCachePath);
     }
 
-    if (!property_exists($locations, $normalizedLocation)) {
+    if (isset($normalizedLocation) && !property_exists($locations, $normalizedLocation)) {
       // Create array of users living there
       $locations->{$normalizedLocation} = ['@' . $_user->screen_name];
     } else {
@@ -74,6 +87,6 @@ foreach ($friends->users as $_user) {
   }
 }
 
-// echo '<pre>';
-// var_dump($locations);
-// echo '</pre>';
+echo '<pre>';
+var_dump($locations);
+echo '</pre>';
