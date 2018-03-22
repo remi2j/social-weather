@@ -11,4 +11,7 @@ $settings = array(
 // Google Maps geocoding key
 $mapsKey = 'AIzaSyAHBZX1m7Q_858eOl2RB_RF3Oz8uYfIWfk';
 
+// Open Weather Map key
+$weatherKey = '72d6e1c9dadde3797f083405e2c01797';
+
 ?>

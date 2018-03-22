@@ -64,7 +64,7 @@ foreach ($friends->users as $_user) {
       $mapsData = file_get_contents($cityCachePath);
       $mapsData = json_decode($mapsData);
     } else {
-      
+
       // Find location with Google Maps API
       $mapsAPI = 'https://maps.googleapis.com/maps/api/geocode/json?address=';
       $mapsURL = $mapsAPI . $_user->location . '&key=' . $mapsKey;
@@ -107,11 +107,13 @@ foreach ($friends->users as $_user) {
   <title>@<?= $_GET['handle'] ?>'s friends forecast - Social Weather</title>
 </head>
 <body>
-  <h1>@<?= $_GET['handle'] ?>'s friends</h1>
-  <section class="cities">
-    <?php foreach ($locations as $_location => $_users) {
-      include 'city.php';
-    } ?>
-  </section>
+  <div class="container">
+    <h1 class="user-welcome">@<?= $_GET['handle'] ?>'s friends forecast</h1>
+    <section class="cities">
+      <?php foreach ($locations as $_location => $_users) {
+        include 'city.php';
+      } ?>
+    </section>
+  </div>
 </body>
 </html>

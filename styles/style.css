@@ -77,6 +77,22 @@ section.twitter-connect {
 
 /**************
 *
+USER PAGE
+*
+***************/
+
+.container {
+  width: 900px;
+  margin: 20px auto;
+}
+
+.user-welcome {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+/**************
+*
 FORECAST CARD
 *
 ***************/
@@ -112,34 +128,42 @@ FORECAST CARD
 }
 
 .location-card .friends .list {
-  padding: 0 14px;
+  padding: 10px 14px;
   line-height: 20px;
   height: 200px;
   overflow-y: scroll;
 }
 
-.location-card .forecast {
-  width: 75%;
+.location-card .friends .list .name:not(:last-child) {
+  margin-bottom: 10px;
 }
 
-.location-card .forecast .hours {
+.location-card .forecast {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 75%;
 }
 
-.location-card .forecast .hour-forecast {
+.location-card .forecast .day {
   width: 25%;
-}
-
-.location-card .forecast .hour-forecast .time {
-  padding: 0 14px;
-  line-height: 20px;
-  border-bottom: 1px solid black;
+  height: 100%;
   border-right: 1px solid black;
 }
 
-.location-card .forecast .hour-forecast .details {
+.location-card .forecast .day-forecast {
+  width: 100%;
+  height: calc(100% - 20px);
+  padding: 10px 14px;
+  line-height: 20px;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.location-card .forecast .day-forecast .details {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -153,6 +177,6 @@ FORECAST CARD
   border-right: 1px solid white;
 }
 
-.location-card .forecast .hour-forecast:last-child {
+.location-card .forecast .day-forecast:last-child {
   border: 0;
 }
