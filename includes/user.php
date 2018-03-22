@@ -53,8 +53,10 @@ if (gettype($friends) === 'string') {
 $locations = new stdClass();
 
 foreach ($friends->users as $_user) {
+
   // Save location if it exists
   if ($_user->location !== '') {
+
     // Identify location
     $cityCachePath = '../cache/city' . md5($_user->location) . '.txt';
     if (file_exists($cityCachePath)) {
@@ -62,6 +64,7 @@ foreach ($friends->users as $_user) {
       $mapsData = file_get_contents($cityCachePath);
       $mapsData = json_decode($mapsData);
     } else {
+      
       // Find location with Google Maps API
       $mapsAPI = 'https://maps.googleapis.com/maps/api/geocode/json?address=';
       $mapsURL = $mapsAPI . $_user->location . '&key=' . $mapsKey;
@@ -73,7 +76,6 @@ foreach ($friends->users as $_user) {
       if (count($mapsData->results) > 0) {
         // Cache for future sessions
         file_put_contents($cityCachePath, json_encode($mapsData));
-        echo 'place exists';
       }
     }
 
@@ -92,6 +94,24 @@ foreach ($friends->users as $_user) {
   }
 }
 
-echo '<pre>';
-var_dump($locations);
-echo '</pre>';
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../styles/reset.min.css">
+  <link rel="stylesheet" href="../styles/style.css">
+  <title>@<?= $_GET['handle'] ?>'s friends forecast - Social Weather</title>
+</head>
+<body>
+  <h1>@<?= $_GET['handle'] ?>'s friends</h1>
+  <section class="cities">
+    <?php foreach ($locations as $_location => $_users) {
+      include 'city.php';
+    } ?>
+  </section>
+</body>
+</html>
