@@ -15,7 +15,7 @@ header {
   text-align: center;
   padding: 24px 0;
   height: 100px;
-  border-bottom: 1px solid black;
+  border-bottom: 3px solid black;
 }
 
 header h1 {
@@ -55,7 +55,7 @@ section.twitter-connect {
 .twitter-connect form label.at {
   width: 60px;
   height: 60px;
-  border: 1px solid black;
+  border: 3px solid black;
   line-height: 60px;
   text-align: center;
 }
@@ -65,14 +65,14 @@ section.twitter-connect {
   height: 60px;
   padding: 0 14px;
   line-height: 60px;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
 }
 
 .twitter-connect form input.go {
   width: 60px;
   height: 60px;
-  border: 1px solid black;
+  border: 3px solid black;
   cursor: pointer;
 }
 
@@ -84,7 +84,7 @@ USER PAGE
 
 .container {
   width: 900px;
-  margin: 20px auto;
+  margin: 30px auto;
 }
 
 .user-welcome {
@@ -99,7 +99,6 @@ FORECAST CARD
 ***************/
 
 .city {
-  border: 1px solid black;
   width: 900px;
   margin: 30px auto;
 }
@@ -107,30 +106,31 @@ FORECAST CARD
 .location-card {
   display: flex;
   flex-direction: row;
+  border: 3px solid black;
 }
 
 .city .city-name {
-  line-height: 64px;
-  text-align: center;
+  line-height: 60px;
+  font-size: 32px;
+  font-weight: bold;
   display: block;
-  border-bottom: 1px solid black;
 }
 
 .location-card .label {
-  border-bottom: 1px solid black;
+  border-bottom: 3px solid black;
   text-transform: uppercase;
-  line-height: 20px;
+  line-height: 30px;
   padding: 0 14px;
 }
 
 .location-card .friends {
   width: 25%;
-  border-right: 1px solid black;
+  border-right: 3px solid black;
 }
 
 .location-card .friends .list {
   padding: 10px 14px;
-  line-height: 20px;
+  line-height: 30px;
   height: 200px;
   overflow-y: scroll;
 }
@@ -142,42 +142,42 @@ FORECAST CARD
 .location-card .forecast {
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
   justify-content: flex-start;
   overflow-x: scroll;
   width: 75%;
+  height: 300px;
 }
 
 .location-card .forecast .day {
-  width: 500px;
+  flex: 0 0 auto;
+  width: 30%;
   height: 100%;
-  border-right: 1px solid black;
+  border-right: 3px solid black;
+}
+
+.location-card .forecast .day:last-child {
+  border-right: 0;
 }
 
 .location-card .forecast .day-forecast {
   width: 100%;
-  height: calc(100% - 21px);
-  padding: 10px 14px;
-  line-height: 20px;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
+  height: calc(100% - 33px);
+  padding: 15px;
+  line-height: 25px;
+  border-bottom: 3px solid black;
+  border-right: 3px solid black;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* background-image: url("../gifs/sun.gif"); */
+  background-image: url("../gifs/sun.gif");
+  color: white;
+  background-size: cover;
 }
 
-/* .location-card .forecast .day-forecast .details {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 20px 14px;
-  text-align: left;
-  flex: 1;
-  height: 180px;
-  background-size: cover;
-  color: white;
-  border-right: 1px solid white;
-} */
+.location-card .forecast .day-forecast.sun {
+  background-image: url("../gifs/sun.gif");
+}
 
 .location-card .forecast .day-forecast:last-child {
   border: 0;

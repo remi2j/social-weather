@@ -3,6 +3,12 @@
 include 'api-keys.php';
 include 'twitter-wrapper.php';
 
+
+// Set Celsius and kmph as default units
+if (empty($_GET['units'])) {
+  $_GET['units'] = 'metric';
+}
+
 // Reset error message
 $errorMessage = '';
 

@@ -18,7 +18,7 @@ $weatherURL = 'https://api.darksky.net/forecast/' . $weatherKey . '/';
       </div>
     </div>
     <div class="forecast">
-      <?php for ($i=0; $i<4; $i++): ?>
+      <?php for ($i=0; $i<7; $i++): ?>
         <div class="day">
           <?php
             // Get weather data for that location
