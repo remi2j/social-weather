@@ -1,4 +1,5 @@
 body {
+  background: #FFF0F2;
   color: black;
   /* Native fonts for better perf */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -161,6 +162,7 @@ FORECAST CARD
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  /* background-image: url("../gifs/sun.gif"); */
 }
 
 .location-card .forecast .day-forecast .details {
@@ -171,7 +173,6 @@ FORECAST CARD
   text-align: left;
   flex: 1;
   height: 180px;
-  background-image: url("../gifs/sun.gif");
   background-size: cover;
   color: white;
   border-right: 1px solid white;

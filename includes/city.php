@@ -2,7 +2,7 @@
 
 // Prepare API calls to Open Weather Map
 include 'api-keys.php';
-$weatherURL = 'https://api.openweathermap.org/data/2.5/forecast/daily?q=';
+$weatherURL = 'https://api.darksky.net/forecast/' . $weatherKey . '/';
 
 ?>
 
@@ -12,7 +12,7 @@ $weatherURL = 'https://api.openweathermap.org/data/2.5/forecast/daily?q=';
     <div class="friends">
       <p class="label">Friends</p>
       <div class="list">
-        <?php foreach ($_users->friends as $_friend): ?>
+        <?php foreach ($_locationDetails->friends as $_friend): ?>
           <p class="name"><?= $_friend ?></p>
         <?php endforeach ?>
       </div>
@@ -21,13 +21,14 @@ $weatherURL = 'https://api.openweathermap.org/data/2.5/forecast/daily?q=';
       <div class="day">
         <?php
           // Get weather data for that location
-          //$weatherData = file_get_contents($weatherURL . $_location . '&appid=' . $weatherKey . '&cnt=4');
-          //echo '<pre>';
-          //var_dump($weatherData);
-          //echo '</pre>';
+          $uniqueWeatherURL = $weatherURL . $_locationDetails->coords->lat . ',' . $_locationDetails->coords->lng;
+          // Filter request to only needed data
+          $uniqueWeatherURL = $uniqueWeatherURL . '?exludes=currently,minutely,hourly,alerts,flags';
+          $weatherData = file_get_contents($uniqueWeatherURL);
+          $weatherData = json_decode($weatherData);
         ?>
 
-        <div class="label">March 18th</div>
+        <div class="label"><?= date('d/m', $weatherData->daily->data[0]->time) ?></div>
         <div class="day-forecast">
           <p class="main">light intensity shower rain</p>
           <p class="temperature">18 degrees</p>
