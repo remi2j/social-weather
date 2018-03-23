@@ -8,10 +8,10 @@ $settings = array(
   'oauth_access_token_secret' => 'WwXavv5yUFwrO2cjHFCwpztDBvqJkWyD8KrKxxi1bkEgq'
 );
 
-// Google Maps geocoding key
+// Google Maps Geocoding API key
 $mapsKey = 'AIzaSyAHBZX1m7Q_858eOl2RB_RF3Oz8uYfIWfk';
 
-// Open Weather Map key
-$weatherKey = '72d6e1c9dadde3797f083405e2c01797';
+// Dark Sky API key
+$weatherKey = '185b7c4de97d44d51648300647222935';
 
 ?>

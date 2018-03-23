@@ -84,12 +84,18 @@ foreach ($friends->users as $_user) {
       $normalizedLocation = $mapsData->results[0]->address_components[0]->long_name;
     }
 
-    if (isset($normalizedLocation) && !property_exists($locations, $normalizedLocation)) {
+    // $mapsData->results[0]->geometry->location
+
+    if (isset($normalizedLocation) && !isset($locations->{$normalizedLocation})) {
+      // Create location object
+      $locations->{$normalizedLocation} = new stdClass();
+      // Save geographical coordinates
+      $locations->{$normalizedLocation}->coords = $mapsData->results[0]->geometry->location;
       // Create array of users living there
-      $locations->{$normalizedLocation} = ['@' . $_user->screen_name];
+      $locations->{$normalizedLocation}->friends = ['@' . $_user->screen_name];
     } else if (isset($normalizedLocation)) {
       // Add user to location's array
-      array_push($locations->{$normalizedLocation}, '@' . $_user->screen_name);
+      array_push($locations->{$normalizedLocation}->friends, '@' . $_user->screen_name);
     }
   }
 }
@@ -111,6 +117,9 @@ foreach ($friends->users as $_user) {
     <h1 class="user-welcome">@<?= $_GET['handle'] ?>'s friends forecast</h1>
     <section class="cities">
       <?php foreach ($locations as $_location => $_users) {
+        // echo '<pre>';
+        // var_dump($_users);
+        // echo '</pre>';
         include 'city.php';
       } ?>
     </section>
