@@ -41,6 +41,11 @@ section.twitter-connect {
   height: calc(100vh - 100px);
 }
 
+.twitter-connect .error {
+  color: red;
+  line-height: 40px;
+}
+
 .twitter-connect .instruction {
   line-height: 40px;
 }

@@ -44,10 +44,10 @@ if (file_exists($twitterCachePath)) {
     // Cache for future sessions
     file_put_contents($twitterCachePath, json_encode($friends));
   } else {
-    // Display error message
-    die($errorMessage);
+    // Redirect to homepage
+    header('Location: ../?error=' . $errorMessage);
+    exit();
   }
-
 
 }
 
