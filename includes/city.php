@@ -18,7 +18,7 @@ $weatherURL = 'https://api.darksky.net/forecast/' . $weatherKey . '/';
       </div>
     </div>
     <div class="forecast">
-      <?php for ($i=0; $i<7; $i++): ?>
+      <?php for ($i=0; $i<4; $i++): ?>
         <div class="day">
           <?php
             // Get weather data for that location
@@ -28,11 +28,10 @@ $weatherURL = 'https://api.darksky.net/forecast/' . $weatherKey . '/';
             // Get data from cache if available
             $weatherCachePath = '../cache/weather' . md5($uniqueWeatherURL) . '.txt';
             if (file_exists($weatherCachePath)) {
-              echo 'from cache <br>';
+              // From cache
               $weatherData = file_get_contents($weatherCachePath);
             } else {
-              echo 'from api <br>';
-              // Or from API
+              // From API
               $weatherData = file_get_contents($uniqueWeatherURL);
               file_put_contents($weatherCachePath, $weatherData);
             }
@@ -41,10 +40,16 @@ $weatherURL = 'https://api.darksky.net/forecast/' . $weatherKey . '/';
 
           <div class="label"><?= date('d/m', $weatherData->daily->data[$i]->time) ?></div>
           <div class="day-forecast">
-            <p class="main">light intensity shower rain</p>
-            <p class="temperature">18 degrees</p>
-            <p class="humidity">42% humidity</p>
-            <p class="wind">1.2 mph wind</p>
+            <p class="main"><?= $weatherData->daily->data[$i]->summary ?></p>
+            <?php
+              $tempLow = round($weatherData->daily->data[$i]->temperatureLow);
+              $tempHigh = round($weatherData->daily->data[$i]->temperatureHigh);
+              $humidity = round($weatherData->daily->data[$i]->humidity * 100);
+              $windSpeed = round($weatherData->daily->data[$i]->windSpeed);
+            ?>
+            <p class="temperature"><?= $tempLow . '°F to ' . $tempHigh . '°F' ?></p>
+            <p class="humidity"><?= $humidity ?>% humidity</p>
+            <p class="wind"><?= $windSpeed ?> mph wind</p>
           </div>
         </div>
       <?php endfor ?>
