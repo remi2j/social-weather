@@ -142,12 +142,13 @@ FORECAST CARD
 .location-card .forecast {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
+  overflow-x: scroll;
   width: 75%;
 }
 
 .location-card .forecast .day {
-  width: 25%;
+  width: 500px;
   height: 100%;
   border-right: 1px solid black;
 }

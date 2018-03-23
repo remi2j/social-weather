@@ -117,9 +117,6 @@ foreach ($friends->users as $_user) {
     <h1 class="user-welcome">@<?= $_GET['handle'] ?>'s friends forecast</h1>
     <section class="cities">
       <?php foreach ($locations as $_location=>$_locationDetails) {
-        // echo '<pre>';
-        // var_dump($_users);
-        // echo '</pre>';
         include 'city.php';
       } ?>
     </section>
