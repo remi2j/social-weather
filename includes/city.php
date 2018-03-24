@@ -47,9 +47,11 @@ $weatherURL = 'https://api.darksky.net/forecast/' . $weatherKey . '/';
               $humidity = round($weatherData->daily->data[$i]->humidity * 100);
               $windSpeed = round($weatherData->daily->data[$i]->windSpeed);
             ?>
-            <p class="temperature"><?= $tempLow . '°F to ' . $tempHigh . '°F' ?></p>
-            <p class="humidity"><?= $humidity ?>% humidity</p>
-            <p class="wind"><?= $windSpeed ?> mph wind</p>
+            <div>
+              <p class="temperature"><?= $tempLow . '°F to ' . $tempHigh . '°F' ?></p>
+              <p class="humidity"><?= $humidity ?>% humidity</p>
+              <p class="wind"><?= $windSpeed ?> mph wind</p>
+            </div>
           </div>
         </div>
       <?php endfor ?>

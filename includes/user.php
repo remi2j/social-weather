@@ -106,6 +106,22 @@ foreach ($friends->users as $_user) {
   }
 }
 
+
+// Filter locations by amount of friends
+function sortLocationsByPopulation($locationA, $locationB) {
+  $friendsA = count($locationA->friends);
+  $friendsB = count($locationB->friends);
+  if (friendsA === friendsB) {
+    return 0;
+  }
+  return friendsA > friendsB ? 1 : -1;
+}
+
+usort($locations, 'sortLocationsByPopulation');
+
+echo '<pre>';
+var_dump($locations);
+echo '</pre>';
 ?>
 
 <!DOCTYPE html>
