@@ -7,7 +7,7 @@ $weatherURL = 'https://api.darksky.net/forecast/' . $weatherKey . '/';
 ?>
 
 <div class="city">
-  <p class="city-name"><?= $_location ?></p>
+  <p class="city-name"><?= $_locationDetails->name ?></p>
   <div class="location-card">
     <div class="friends">
       <p class="label">Friends</p>

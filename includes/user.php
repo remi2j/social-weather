@@ -56,7 +56,7 @@ if (gettype($friends) === 'string') {
 }
 
 // Get locations from friends list
-$locations = new stdClass();
+$locations = [];
 
 foreach ($friends->users as $_user) {
 
@@ -92,36 +92,36 @@ foreach ($friends->users as $_user) {
 
     // $mapsData->results[0]->geometry->location
 
-    if (isset($normalizedLocation) && !isset($locations->{$normalizedLocation})) {
+    if (isset($normalizedLocation) && !isset($locations[$normalizedLocation])) {
       // Create location object
-      $locations->{$normalizedLocation} = new stdClass();
+      $locations[$normalizedLocation] = new stdClass();
+      $locations[$normalizedLocation]->name = $normalizedLocation;
       // Save geographical coordinates
-      $locations->{$normalizedLocation}->coords = $mapsData->results[0]->geometry->location;
+      $locations[$normalizedLocation]->coords = $mapsData->results[0]->geometry->location;
       // Create array of users living there
-      $locations->{$normalizedLocation}->friends = ['@' . $_user->screen_name];
+      $locations[$normalizedLocation]->friends = ['@' . $_user->screen_name];
     } else if (isset($normalizedLocation)) {
       // Add user to location's array
-      array_push($locations->{$normalizedLocation}->friends, '@' . $_user->screen_name);
+      array_push($locations[$normalizedLocation]->friends, '@' . $_user->screen_name);
     }
   }
 }
 
-
-// Filter locations by amount of friends
+// Prepare location sorting by friends amount
 function sortLocationsByPopulation($locationA, $locationB) {
+  // Get friends amount for each location
   $friendsA = count($locationA->friends);
   $friendsB = count($locationB->friends);
-  if (friendsA === friendsB) {
+  
+  if ($friendsA === $friendsB) {
     return 0;
   }
-  return friendsA > friendsB ? 1 : -1;
+  return $friendsA > $friendsB ? -1 : 1;
 }
 
+// Filter locations by amount of friends
 usort($locations, 'sortLocationsByPopulation');
 
-echo '<pre>';
-var_dump($locations);
-echo '</pre>';
 ?>
 
 <!DOCTYPE html>
