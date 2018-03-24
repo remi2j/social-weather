@@ -4,15 +4,24 @@
 include 'api-keys.php';
 $weatherURL = 'https://api.darksky.net/forecast/' . $weatherKey . '/';
 
+// Append location country if possible
+if ($_location->name !== $_location->country) {
+  $locationFullName = $_location->name . ', ' . $_location->country;
+} else {
+   $locationFullName = $_location->name;
+}
+
 ?>
 
 <div class="city">
-  <p class="city-name"><?= $_locationDetails->name ?></p>
+  <p class="city-name">
+    <?= $locationFullName ?>
+  </p>
   <div class="location-card">
     <div class="friends">
       <p class="label">Friends</p>
       <div class="list">
-        <?php foreach ($_locationDetails->friends as $_friend): ?>
+        <?php foreach ($_location->friends as $_friend): ?>
           <p class="name"><?= $_friend ?></p>
         <?php endforeach ?>
       </div>
@@ -22,7 +31,7 @@ $weatherURL = 'https://api.darksky.net/forecast/' . $weatherKey . '/';
         <div class="day">
           <?php
             // Get weather data for that location
-            $uniqueWeatherURL = $weatherURL . $_locationDetails->coords->lat . ',' . $_locationDetails->coords->lng;
+            $uniqueWeatherURL = $weatherURL . $_location->coords->lat . ',' . $_location->coords->lng;
             // Filter request to only needed data
             $uniqueWeatherURL = $uniqueWeatherURL . '?exludes=currently,minutely,hourly,alerts,flags';
             // Get data from cache if available

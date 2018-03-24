@@ -87,7 +87,17 @@ foreach ($friends->users as $_user) {
 
     // Normalize location name
     if (count($mapsData->results) > 0) {
+      // Save location name
       $normalizedLocation = $mapsData->results[0]->address_components[0]->long_name;
+      // Save location country
+      $country = '';
+      foreach ($mapsData->results[0]->address_components as $_addressComponent) {
+        if ($_addressComponent->types[0] === 'country') {
+          if ($country !== $normalizedLocation) {
+            $country = $_addressComponent->long_name;
+          }
+        }
+      }
     }
 
     // $mapsData->results[0]->geometry->location
@@ -96,6 +106,7 @@ foreach ($friends->users as $_user) {
       // Create location object
       $locations[$normalizedLocation] = new stdClass();
       $locations[$normalizedLocation]->name = $normalizedLocation;
+      $locations[$normalizedLocation]->country = $country;
       // Save geographical coordinates
       $locations[$normalizedLocation]->coords = $mapsData->results[0]->geometry->location;
       // Create array of users living there
@@ -138,7 +149,7 @@ usort($locations, 'sortLocationsByPopulation');
   <div class="container">
     <h1 class="user-welcome">@<?= $_GET['handle'] ?>'s friends forecast</h1>
     <section class="cities">
-      <?php foreach ($locations as $_location=>$_locationDetails) {
+      <?php foreach ($locations as $_location) {
         include 'city.php';
       } ?>
     </section>
