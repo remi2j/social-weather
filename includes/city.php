@@ -48,14 +48,31 @@ if ($_location->name !== $_location->country) {
           ?>
 
           <div class="label"><?= date('d/m', $weatherData->daily->data[$i]->time) ?></div>
-          <div class="day-forecast">
+          <?php
+            // Extract weather info
+            $summary = $weatherData->daily->data[$i]->summary;
+            $tempLow = round($weatherData->daily->data[$i]->temperatureLow);
+            $tempHigh = round($weatherData->daily->data[$i]->temperatureHigh);
+            $humidity = round($weatherData->daily->data[$i]->humidity * 100);
+            $windSpeed = round($weatherData->daily->data[$i]->windSpeed);
+
+            // Display gif depending on weather
+            if (stripos($summary, 'sun') !== false) {
+              $gif = 'sun';
+            } else if (stripos($summary, 'cloud') !== false) {
+              $gif = 'cloud';
+            } else if (stripos($summary, 'rain') !== false) {
+              $gif = 'rain';
+            } else if (stripos($summary, 'storm') !== false) {
+              $gif = 'storm';
+            } else if (stripos($summary, 'snow') !== false) {
+              $gif = 'snow';
+            } else {
+              $gif = 'default';
+            }
+          ?>
+          <div class="day-forecast <?= $gif ?>">
             <p class="main"><?= $weatherData->daily->data[$i]->summary ?></p>
-            <?php
-              $tempLow = round($weatherData->daily->data[$i]->temperatureLow);
-              $tempHigh = round($weatherData->daily->data[$i]->temperatureHigh);
-              $humidity = round($weatherData->daily->data[$i]->humidity * 100);
-              $windSpeed = round($weatherData->daily->data[$i]->windSpeed);
-            ?>
             <div>
               <p class="temperature"><?= $tempLow . '°F to ' . $tempHigh . '°F' ?></p>
               <p class="humidity"><?= $humidity ?>% humidity</p>

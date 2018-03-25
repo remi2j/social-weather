@@ -177,13 +177,34 @@ FORECAST CARD
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-image: url("../gifs/sun.gif");
-  color: white;
+  color: #FFF0F2;
   background-size: cover;
 }
 
 .location-card .forecast .day-forecast.sun {
   background-image: url("../gifs/sun.gif");
+  background-size: cover;
+}
+.location-card .forecast .day-forecast.rain {
+  background-image: url("../gifs/rain.gif");
+  background-size: cover;
+}
+.location-card .forecast .day-forecast.storm {
+  background-image: url("../gifs/storm.gif");
+  background-size: cover;
+}
+.location-card .forecast .day-forecast.snow {
+  background-image: url("../gifs/snow.gif");
+  background-size: cover;
+}
+.location-card .forecast .day-forecast.cloud {
+  background-image: url("../gifs/cloud.gif");
+  background-size: cover;
+}
+.location-card .forecast .day-forecast.default {
+  background-image: url("../gifs/default.gif");
+  background-size: cover;
+  color: black;
 }
 
 .location-card .forecast .day-forecast:last-child {
