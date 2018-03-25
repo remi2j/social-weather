@@ -15,8 +15,9 @@ $errorMessage = '';
 // Check if cached data exists
 $twitterCachePath = '../cache/user' . $_GET['handle'] . '.txt';
 
-if (file_exists($twitterCachePath)) {
+if (file_exists($twitterCachePath) && time() - filemtime($twitterCachePath) < 10) {
   // Get friends from cache
+  echo 'from cache <br>';
   $friends = file_get_contents($twitterCachePath);
   $friends = json_decode($friends);
 } else {

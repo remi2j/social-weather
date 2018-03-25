@@ -36,7 +36,8 @@ if ($_location->name !== $_location->country) {
             $uniqueWeatherURL = $uniqueWeatherURL . '?exludes=currently,minutely,hourly,alerts,flags';
             // Get data from cache if available
             $weatherCachePath = '../cache/weather' . md5($uniqueWeatherURL) . '.txt';
-            if (file_exists($weatherCachePath)) {
+            // Invalidate cache after 90 minutes
+            if (file_exists($weatherCachePath) && time() - filemtime($twitterCachePath) < 5400) {
               // From cache
               $weatherData = file_get_contents($weatherCachePath);
             } else {
