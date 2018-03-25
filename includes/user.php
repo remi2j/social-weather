@@ -15,9 +15,9 @@ $errorMessage = '';
 // Check if cached data exists
 $twitterCachePath = '../cache/user' . $_GET['handle'] . '.txt';
 
-if (file_exists($twitterCachePath) && time() - filemtime($twitterCachePath) < 10) {
+// Invalidate users cache after 5 days
+if (file_exists($twitterCachePath) && time() - filemtime($twitterCachePath) < 432000) {
   // Get friends from cache
-  echo 'from cache <br>';
   $friends = file_get_contents($twitterCachePath);
   $friends = json_decode($friends);
 } else {
@@ -66,6 +66,7 @@ foreach ($friends->users as $_user) {
 
     // Identify location
     $cityCachePath = '../cache/city' . md5($_user->location) . '.txt';
+    // Never invalidate locations cache
     if (file_exists($cityCachePath)) {
       // Get maps data from cache if available
       $mapsData = file_get_contents($cityCachePath);

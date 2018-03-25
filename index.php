@@ -13,6 +13,14 @@
     <h1>Social Weather</h1>
     <h2>Your friends forecast</h2>
   </header>
-  <?php include "includes/connect.php" ?>
+  <section class="twitter-connect">
+    <?php
+      if (!empty($_GET['error'])) {
+        echo '<p class="error">' . $_GET['error'] . '</p>';
+      }
+    ?>
+    <p class="instruction">Enter your Twitter handle:</p>
+    <?php include 'includes/twitter-form.php' ?>
+  </section>
 </body>
 </html>
