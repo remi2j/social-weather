@@ -39,6 +39,7 @@ section.twitter-connect {
   justify-content: center;
   margin: 0 auto;
   width: 450px;
+  max-width: 100%;
   height: calc(100vh - 100px);
 }
 
@@ -56,11 +57,12 @@ section.twitter-connect {
   flex-direction: row;
   justify-content: flex-start;
   width: 100%;
+  height: 60px;
 }
 
 .twitter-form label.at {
   width: 60px;
-  height: 60px;
+  height: 100%;
   border: 3px solid black;
   line-height: 60px;
   text-align: center;
@@ -68,7 +70,7 @@ section.twitter-connect {
 
 .twitter-form input.search {
   flex: 1;
-  height: 60px;
+  height: 100%;
   padding: 0 14px;
   line-height: 60px;
   border-top: 3px solid black;
@@ -77,7 +79,7 @@ section.twitter-connect {
 
 .twitter-form input.go {
   width: 60px;
-  height: 60px;
+  height: 100%;
   border: 3px solid black;
   cursor: pointer;
 }
@@ -244,12 +246,42 @@ RESPONSIVE LAYOUT
     font-size: 14px;
   }
 
+  .container {
+    margin: 20px auto;
+  }
+
+  header.small {
+    padding-bottom: 20px;
+  }
+
+  .twitter-form {
+    width: 60% !important;
+    height: 40px;
+  }
+
+  .twitter-connect .twitter-form {
+    margin: 0 auto;
+  }
+
+  .twitter-connect .instruction {
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  .twitter-form .at {
+    line-height: 40px !important;
+  }
+
+  .twitter-form .at, .search, .go {
+    width: 40px !important;
+  }
+
   .user-welcome {
     margin: 20px 0;
   }
 
   .city-name {
-    line-height: 40px;
+    line-height: 40px !important;
   }
 
   .location-card {
@@ -265,6 +297,15 @@ RESPONSIVE LAYOUT
   .location-card .friends .list {
     height: auto;
     border-bottom: 3px solid black;
+    padding: 10px;
+  }
+
+  .location-card .forecast {
+    height: 270px;
+  }
+
+  .location-card .forecast .day-forecast {
+    padding: 10px;
   }
 
   .location-card .forecast .day {
