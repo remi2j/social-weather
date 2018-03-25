@@ -34,8 +34,15 @@ CONNECT TWITTER
 ***************/
 
 section.twitter-connect {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   margin: 0 auto;
   width: 450px;
@@ -53,8 +60,15 @@ section.twitter-connect {
 }
 
 .twitter-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
   justify-content: flex-start;
   width: 100%;
   height: 60px;
@@ -69,6 +83,8 @@ section.twitter-connect {
 }
 
 .twitter-form input.search {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
   flex: 1;
   height: 100%;
   padding: 0 14px;
@@ -97,11 +113,20 @@ USER PAGE
 }
 
 header.small {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
-  border-bottom: 3px solid rgba(0,0,0,0.1);
+  border-bottom: 3px solid rgba(0, 0, 0, 0.1);
   padding-bottom: 30px;
 }
 
@@ -133,7 +158,12 @@ FORECAST CARD
 }
 
 .location-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
   border: 3px solid black;
 }
@@ -169,17 +199,29 @@ FORECAST CARD
 }
 
 .location-card .forecast {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
   /* Fill available space */
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
   flex: 1;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
   justify-content: flex-start;
   overflow-x: scroll;
   height: 300px;
 }
 
 .location-card .forecast .day {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
   flex: 0 0 auto;
   width: 30%;
   height: 100%;
@@ -197,8 +239,15 @@ FORECAST CARD
   line-height: 30px;
   border-bottom: 3px solid black;
   border-right: 3px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   color: #FFF0F2;
   background-size: cover;
@@ -208,22 +257,27 @@ FORECAST CARD
   background-image: url("../gifs/sun.gif");
   background-size: cover;
 }
+
 .location-card .forecast .day-forecast.rain {
   background-image: url("../gifs/rain.gif");
   background-size: cover;
 }
+
 .location-card .forecast .day-forecast.storm {
   background-image: url("../gifs/storm.gif");
   background-size: cover;
 }
+
 .location-card .forecast .day-forecast.snow {
   background-image: url("../gifs/snow.gif");
   background-size: cover;
 }
+
 .location-card .forecast .day-forecast.cloud {
   background-image: url("../gifs/cloud.gif");
   background-size: cover;
 }
+
 .location-card .forecast .day-forecast.default {
   background-image: url("../gifs/default.gif");
   background-size: cover;
@@ -271,7 +325,9 @@ RESPONSIVE LAYOUT
     line-height: 40px !important;
   }
 
-  .twitter-form .at, .search, .go {
+  .twitter-form .at,
+  .search,
+  .go {
     width: 40px !important;
   }
 
@@ -284,6 +340,9 @@ RESPONSIVE LAYOUT
   }
 
   .location-card {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
   }
 
@@ -310,6 +369,5 @@ RESPONSIVE LAYOUT
   .location-card .forecast .day {
     width: 45%;
   }
-
 
 }
