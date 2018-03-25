@@ -18,11 +18,12 @@ header.home {
 }
 
 header h1 {
-  font-size: 36px;
+  font-size: 48px;
+  font-weight: bold;
 }
 
 header h2 {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 /**************
@@ -96,15 +97,14 @@ header.small {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 3px solid rgba(0,0,0,0.1);
+  padding-bottom: 30px;
 }
 
 .logo {
-  font-size: 72px;
+  font-size: 16px;
   font-weight: bold;
-  letter-spacing: 6px;
   text-decoration: none;
-  -webkit-text-stroke: 3px black;
-  -webkit-text-fill-color: transparent;
 }
 
 header.small .twitter-form {
@@ -143,7 +143,6 @@ FORECAST CARD
 
 .location-card .label {
   border-bottom: 3px solid black;
-  text-transform: uppercase;
   line-height: 30px;
   padding: 0 14px;
 }
