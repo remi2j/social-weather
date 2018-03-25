@@ -3,6 +3,7 @@ body {
   color: black;
   /* Native fonts for better perf */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
 }
 
 /**************
@@ -18,12 +19,12 @@ header.home {
 }
 
 header h1 {
-  font-size: 48px;
+  font-size: 3em;
   font-weight: bold;
 }
 
 header h2 {
-  font-size: 16px;
+  font-size: 1em;
 }
 
 /**************
@@ -89,6 +90,7 @@ USER PAGE
 
 .container {
   width: 900px;
+  max-width: 97%;
   margin: 30px auto;
 }
 
@@ -102,7 +104,7 @@ header.small {
 }
 
 .logo {
-  font-size: 16px;
+  font-size: 1em;
   font-weight: bold;
   text-decoration: none;
 }
@@ -112,7 +114,7 @@ header.small .twitter-form {
 }
 
 .user-welcome {
-  font-size: 48px;
+  font-size: 3em;
   font-weight: bold;
   margin: 30px 0;
 }
@@ -124,7 +126,7 @@ FORECAST CARD
 ***************/
 
 .city {
-  width: 900px;
+  width: 100%;
   margin: 30px auto;
 }
 
@@ -136,7 +138,7 @@ FORECAST CARD
 
 .city .city-name {
   line-height: 60px;
-  font-size: 32px;
+  font-size: 2em;
   font-weight: bold;
   display: block;
 }
@@ -228,4 +230,46 @@ FORECAST CARD
 
 .location-card .forecast .day-forecast:last-child {
   border: 0;
+}
+
+/**************
+*
+RESPONSIVE LAYOUT
+*
+***************/
+
+@media screen and (max-width: 910px) {
+
+  body {
+    font-size: 14px;
+  }
+
+  .user-welcome {
+    margin: 20px 0;
+  }
+
+  .city-name {
+    line-height: 40px;
+  }
+
+  .location-card {
+    flex-direction: column;
+  }
+
+  .location-card .friends {
+    width: 100%;
+    border-right: 0;
+    height: auto;
+  }
+
+  .location-card .friends .list {
+    height: auto;
+    border-bottom: 3px solid black;
+  }
+
+  .location-card .forecast .day {
+    width: 45%;
+  }
+
+
 }
