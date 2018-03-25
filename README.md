@@ -14,6 +14,7 @@
 * Group friends by locations and sort them by friends amount
 * 7-day forecast for all locations
 * Detailed forecast: description, temperature, humidity level and wind speed for every day.
+* Optimised for both mobile and desktop devices
 
 ## External services
 

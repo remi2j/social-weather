@@ -227,7 +227,6 @@ FORECAST CARD
 .location-card .forecast .day-forecast.default {
   background-image: url("../gifs/default.gif");
   background-size: cover;
-  color: black;
 }
 
 .location-card .forecast .day-forecast:last-child {
