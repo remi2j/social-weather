@@ -9,10 +9,10 @@
   <title>Social Weather</title>
 </head>
 <body>
-  <?php include "includes/header.php" ?>
+  <header class="home">
+    <h1>Social Weather</h1>
+    <h2>Your friends forecast</h2>
+  </header>
   <?php include "includes/connect.php" ?>
-  <!-- <section class="cities">
-    <?php include "imports/city.php" ?>
-  </section> -->
 </body>
 </html>

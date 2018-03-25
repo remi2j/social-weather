@@ -147,6 +147,10 @@ usort($locations, 'sortLocationsByPopulation');
 </head>
 <body>
   <div class="container">
+    <header class="small">
+      <a href="../" class="logo" title="Home - Social Weather">S.W.</a>
+      <?php include 'twitter-form.php' ?>
+    </header>
     <h1 class="user-welcome">@<?= $_GET['handle'] ?>'s friends forecast</h1>
     <section class="cities">
       <?php foreach ($locations as $_location) {
