@@ -120,6 +120,13 @@ foreach ($friends->users as $_user) {
   }
 }
 
+// Display error if user has no friends
+if (count($locations) === 0) {
+  $errorMessage = 'This user doesn\'t have enough friends';
+  header('Location: ../?error=' . $errorMessage);
+  exit();
+}
+
 // Prepare location sorting by friends amount
 function sortLocationsByPopulation($locationA, $locationB) {
   // Get friends amount for each location
